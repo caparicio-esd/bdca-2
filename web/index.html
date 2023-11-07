@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Contador 2</title>
+    <script type="module" src="app.mjs"></script>
+  </head>
+  <body>
+    <div class="app">
+      <div class="container">
+        <header class="header">
+          <h1>Contador</h1>
+        </header>
+        <main class="main">
+          <section class="setters">
+            <div class="set">
+              <input type="text" id="cset1" placeholder="Mete un valor" />
+              <button id="cset2">Set</button>
+            </div>
+            <div class="incr">
+              <button type="button" id="cincr">Incrementar</button>
+            </div>
+          </section>
+          <section class="output">
+            <p>Valor actual = <span id="valor">???</span></p>
+          </section>
+        </main>
+        <aside class="aside">
+          <div class="login">
+            <button id="login">Login</button>
+            <p>Cuenta: <span id="cuenta"></span></p>
+            
+          </div>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
