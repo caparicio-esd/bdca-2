@@ -73,6 +73,7 @@ const init = async () => {
     document.getElementById("cincr").addEventListener("click", handleIncr);
     document.getElementById("login").addEventListener("click", handleLogin);
     document.getElementById("cset2").addEventListener("click", handleSet);
+    document.getElementById("reset").addEventListener("click", handleReset);
 
     refreshContador();
     refreshAccount();
@@ -163,6 +164,33 @@ const handleSet = async (event) => {
 
     // Ejecutar incr como una transacción desde la cuenta account.
     await contador.methods.set(value).send({
+      from: account,
+      gas: 200000,
+    });
+  } catch (error) {
+    console.log(error);
+  } finally {
+    document.getElementById("cset1").value = "";
+  }
+};
+
+// como me lo comentaste el miércoles, lo he metido también el botón de reseteo...
+const handleReset = async (event) => {
+  console.log("Reseteando valor");
+  event.preventDefault();
+
+  try {
+    const accounts = await web3.eth.getAccounts();
+    const account = accounts[0];
+
+    if (!account) {
+      alert("No se puede acceder a las cuentas de usuario.");
+      return;
+    }
+    console.log("Cuenta =", account);
+
+    // Ejecutar incr como una transacción desde la cuenta account.
+    await contador.methods.set(0).send({
       from: account,
       gas: 200000,
     });
